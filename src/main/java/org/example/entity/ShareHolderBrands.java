@@ -1,16 +1,16 @@
 package org.example.entity;
 
-public class shareholder_brand {
+public class ShareHolderBrands {
     private int id;
     private int shareholderID;
     private int brandID;
 
-    public shareholder_brand(int shareholderID, int brandID) {
+    public ShareHolderBrands(int shareholderID, int brandID) {
         this.shareholderID = shareholderID;
         this.brandID = brandID;
     }
 
-    public shareholder_brand() {
+    public ShareHolderBrands() {
     }
 
     public int getId() {
