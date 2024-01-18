@@ -16,19 +16,21 @@ public class CategoryRepasitory {
         connection= DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres","postgres","myjava123");
     }
 
-    public void save(Category category) throws Exception
+    public int save(Category category) throws Exception
     {
         preparedStatement=connection.prepareStatement("insert into category values (DEFAULT,?,?);");
         preparedStatement.setString(1,category.getName());
         preparedStatement.setString(2,category.getDescription());
         preparedStatement.executeUpdate();
+        ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+        int id = generatedKeys.getInt(1);
         preparedStatement.close();
+        return id;
     }
 
-    public Category load (int categoryID) throws Exception{
+    public Category load () throws Exception{
         Category category=new Category();
-        preparedStatement=connection.prepareStatement("select * from category where id=?");
-        preparedStatement.setInt(1,categoryID);
+        preparedStatement=connection.prepareStatement("select * from category");
         resultSet=preparedStatement.executeQuery();
         while (resultSet.next()) {
             category.setId(Integer.parseInt(resultSet.getString("id")));
