@@ -17,20 +17,22 @@ public class BrandRepasitory {
         connection= DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres","postgres","myjava123");
     }
 
-    public void save(Brand brand) throws Exception
+    public int save(Brand brand) throws Exception
     {
         preparedStatement=connection.prepareStatement("insert into brand values (DEFAULT,?,?,?);");
         preparedStatement.setString(1,brand.getName());
         preparedStatement.setString(2,brand.getWebsite());
         preparedStatement.setString(3,brand.getDescription());
         preparedStatement.executeUpdate();
+        ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+        int id = generatedKeys.getInt(1);
         preparedStatement.close();
+        return id;
     }
 
-    public Brand load (int brandID) throws Exception{
+    public Brand load () throws Exception{
         Brand brand=new Brand();
-        preparedStatement=connection.prepareStatement("select * from brand where id=?");
-        preparedStatement.setInt(1,brandID);
+        preparedStatement=connection.prepareStatement("select * from brand");
         resultSet=preparedStatement.executeQuery();
         while (resultSet.next()) {
             brand.setId(Integer.parseInt(resultSet.getString("id")));
