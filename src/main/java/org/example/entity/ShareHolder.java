@@ -1,18 +1,18 @@
 package org.example.entity;
 
-public class shareholder {
+public class ShareHolder {
     private int id;
     private String name;
     private int phoneNumber;
     private int nationalCode;
 
-    public shareholder(String name, int phoneNumber, int nationalCode) {
+    public ShareHolder(String name, int phoneNumber, int nationalCode) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.nationalCode = nationalCode;
     }
 
-    public shareholder() {
+    public ShareHolder() {
     }
 
     public int getId() {
