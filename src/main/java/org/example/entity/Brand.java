@@ -1,16 +1,18 @@
 package org.example.entity;
 
-public class category {
+public class Brand {
     private int id;
     private String name;
+    private String website;
     private String description;
 
-    public category(String name, String description) {
+    public Brand(String name, String website, String description) {
         this.name = name;
+        this.website = website;
         this.description = description;
     }
 
-    public category() {
+    public Brand() {
     }
 
     public int getId() {
@@ -29,6 +31,14 @@ public class category {
         this.name = name;
     }
 
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -39,9 +49,10 @@ public class category {
 
     @Override
     public String toString() {
-        return "category{" +
+        return "brand{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", website='" + website + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

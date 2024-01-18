@@ -1,20 +1,20 @@
 package org.example.entity;
 
-public class product {
+public class Product {
     private int id;
     private String name;
     private int createDate;
     private int categoryID;
     private int brandID;
 
-    public product(String name, int createDate, int categoryID, int brandID) {
+    public Product(String name, int createDate, int categoryID, int brandID) {
         this.name = name;
         this.createDate = createDate;
         this.categoryID = categoryID;
         this.brandID = brandID;
     }
 
-    public product() {
+    public Product() {
     }
 
     public int getId() {
