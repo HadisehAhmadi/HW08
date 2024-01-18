@@ -27,10 +27,9 @@ public class ProductRepasitory {
         preparedStatement.close();
     }
 
-    public Product load (int productID) throws Exception{
+    public Product load () throws Exception{
         Product product=new Product();
-        preparedStatement=connection.prepareStatement("select * from product where id=?");
-        preparedStatement.setInt(1,productID);
+        preparedStatement=connection.prepareStatement("select * from product");
         resultSet=preparedStatement.executeQuery();
         while (resultSet.next()) {
             product.setId(Integer.parseInt(resultSet.getString("id")));
